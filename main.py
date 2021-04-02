@@ -1,4 +1,4 @@
-from tkinter import filedialog, ttk, font
+from tkinter import filedialog, font, Label, Text, Frame, StringVar, ttk
 from xml.dom import minidom
 from tkinter import *
 import tkinter as tk
@@ -104,8 +104,46 @@ class inicio():
         self.opc = Menu(self.pestana)
         self.pestana.config(menu = self.opc)
         self.cargando_menu = Menu(self.opc, tearoff = 0)
+        self.pestana.resizable(False, False)
+        self.pestana.geometry('650x350')
+        self.pestana.config(bg = 'lightgray')
         
+        self.cargando_menu.add_command(label="Archivo XML", command = lambda: self.abrirXML())   
+        self.boton_operacion = Menu(self.opc, tearoff=0)
+        self.boton_operacion.add_command(label="Girar (Horizontalmente)", command = lambda: self.boton(1))
+        self.boton_operacion.add_command(label="Girar (Verticalmente)", command = lambda: self.boton(2))
+        self.boton_operacion.add_command(label="Transpuesta", command = lambda: self.boton(3))
+        self.boton_operacion.add_command(label="Clear", command = lambda: self.boton(4))
+        self.boton_operacion.add_command(label="Linea Horizontal", command = lambda: self.boton(5))
+        self.boton_operacion.add_command(label="Linea Vertical", command = lambda: self.boton(6))
+        self.boton_operacion.add_command(label="Agregar rectangulo", command = lambda: self.boton(7))
+        self.boton_operacion.add_command(label="Agregar triangulo rectangulo", command = lambda: self.boton(8))
+        self.boton_operacion.add_separator()       
+        self.boton_operacion.add_command(label="Union", command = lambda: self.boton(9))
+        self.boton_operacion.add_command(label="Interseccion", command = lambda: self.boton(10))
+        self.boton_operacion.add_command(label="Diferencia", command = lambda: self.boton(11))
+        self.boton_operacion.add_command(label="Diferencia Simetrica", command = lambda: self.boton(12))
+        
+        self.reportemenu = Menu(self.opc, tearoff = 0)
+        self.reportemenu.add_command(label = "Desplegar HTML")
+
+        self.helpmenu = Menu(self.opc, tearoff = 0)
+        self.helpmenu.add_command(label="Información del desarrollador")
+        self.helpmenu.add_command(label="Documentación del programa")
+        self.opc.add_cascade(label="Abrir", menu = self.cargando_menu)
+        
+        
+
+        
+        self.Boton_Pane = Frame(self.pestana, borderwidth = 4, relief = 'raised')        
+        self.Panel_a = Frame(self.pestana, borderwidth = 4, relief = 'groove', bg="white")             
+        self.Panel_b = Frame(self.pestana, borderwidth = 4, relief = 'groove', bg="white")             
+        self.Panel_c = Frame(self.pestana, borderwidth = 4, relief = 'groove', bg="gray")
         self.pestana.mainloop()
+        
+        
+        
+        
         
         
 iniciar = inicio()
