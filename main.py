@@ -217,7 +217,34 @@ class Matriz_Ortogonal(object):
                 tmp = tmp.pos_right
             titulo_fila = titulo_fila.siguiente
 
-
+#-----------------------------XXXXXXXXXXXXXXX------XXXXXXXXXXXXXXXXX---XXXXX--XXXXXXX--------------------------------------------
+#-----------------------------XXXXXXXXXXXXXXXX-----XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXX------------------------------------------
+#-----------------------------XXXXX-----XXXXXXX----------XXXXX---------XXXXXXXX---XXXXXX-----------------------------------------
+#-----------------------------XXXXX-------XXXXXX---------XXXXX---------XXXXXXX-----XXXXX-----------------------------------------
+#-----------------------------XXXXX---------XXXX---------XXXXX---------XXXXXX----------------------------------------------------
+#-----------------------------XXXXX-------XXXXXX---------XXXXX---------XXXXX-----------------------------------------------------
+#-----------------------------XXXXX-----XXXXXXX----------XXXXX---------XXXXX-----------------------------------------------------
+#-----------------------------XXXXXXXXXXXXXXXX-----XXXXXXXXXXXXXXXXX---XXXXX-----------------------------------------------------
+#-----------------------------XXXXXXXXXXXXXXX------XXXXXXXXXXXXXXXXX---XXXXX-----------------------------------------------------
+if os.path.isdir('Desktop/C.201906051_Proyecto2/'):
+    print('Confirmando Existencia del Directorio')
+    time.sleep(0.8)
+    print('...............................................')
+    time.sleep(0.5)
+    print('                                 Ruta Existente')
+else:
+    print('Confirmando Existencia del Directorio')
+    time.sleep(0.8)
+    print('...............................................')
+    time.sleep(0.5)
+    print('                             Creando Directorio')
+    time.sleep(0.5)
+    print('...............................................')
+    time.sleep(0.5)
+    directorio_nuevo = 'Desktop/C.201906051_Proyecto2'
+    os.mkdir(directorio_nuevo)
+    time.sleep(0.5)
+    print('                              Directorio Creado')
 
 
 
