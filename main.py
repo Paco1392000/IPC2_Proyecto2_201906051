@@ -1,11 +1,11 @@
 from tkinter import filedialog, font, Label, Text, Frame, StringVar, ttk
 from xml.dom import minidom
-from webbrowser import *
 from tkinter import *
 import tkinter as tk
+import webbrowser
 import datetime
+import time
 import os
-#Lista que obtendra los datos
 #--------------------XXXXXXXXXXXXXX---XXXXX------XXXXX---XXXXXXXXXX-------XXXXX---XXXXXXXXXXXXXXXX------------------
 #--------------------XXXXXXXXXXXXXX---XXXXX------XXXXX---XXXXXXXXXX-------XXXXX---XXXXXXXXXXXXXXXX------------------
 #--------------------XXXXX------------XXXXX------XXXXX---XXXXXXXXXXXX-----XXXXX---XXXXX------XXXXX------------------
@@ -15,6 +15,7 @@ import os
 #--------------------XXXXX------------XXXXX------XXXXX---XXXXX-----XXXXXXXXXXXX---XXXXX------XXXXX------------------
 #--------------------XXXXX------------XXXXXXXXXXXXXXXX---XXXXX-------XXXXXXXXXX---XXXXXXXXXXXXXXXX------------------
 #--------------------XXXXX------------XXXXXXXXXXXXXXXX---XXXXX-------XXXXXXXXXX---XXXXXXXXXXXXXXXX------------------
+#Lista que obtendra los datos
 class Lista:
     def __init__(self):
         self.inicio = None  
@@ -64,6 +65,15 @@ class Lista:
                 nuevo.siguiente = self.inicio
                 self.longitud+=1
 
+#---------------------------------XXXXXXXXXXXXXXXXXXXXXXX--------------------XXXXXXXXXXXXXXXXXXX--------------------
+#---------------------------------XXXXXXXXXXXXXXXXXXXXXXX--------------------XXXXXXXXXXXXXXXXXXX--------------------
+#---------------------------------XXXXXXXXXXXXXXXXXXXXXXX--------------------XXXXX---------XXXXX--------------------
+#---------------------------------XXXXX----XXXXX----XXXXX---XXXXXXXXXXXXXX---XXXXX---------XXXXX--------------------
+#---------------------------------XXXXX----XXXXX----XXXXX---XXXXXXXXXXXXXX---XXXXX---------XXXXX--------------------
+#---------------------------------XXXXX----XXXXX----XXXXX---XXXXXXXXXXXXXX---XXXXX---------XXXXX--------------------
+#---------------------------------XXXXX----XXXXX----XXXXX--------------------XXXXX---------XXXXX--------------------
+#---------------------------------XXXXX----XXXXX----XXXXX--------------------XXXXXXXXXXXXXXXXXXX--------------------
+#---------------------------------XXXXX----XXXXX----XXXXX--------------------XXXXXXXXXXXXXXXXXXX--------------------
 #Parte para la Matriz Ortogonal (nodo) -> recorre la matriz  
 class Nodo(object):
     def __init__(self, dato, fila, columna):
@@ -108,7 +118,6 @@ class Objeto_Titulo(object):
                     tmp.siguiente = nuevo
                     nuevo.anterior = tmp
                 
-    
     def devolver_valor(self, numero):
         tmp = self.inicio        
         while tmp != None:
@@ -123,7 +132,7 @@ class Objeto_Titulo(object):
         else:
             return False
 
-class Matriz(object):
+class Matriz_Ortogonal(object):
     def __init__(self, val_in, filas, columnas):
         self.siguiente = None
         self.filas = filas
@@ -132,7 +141,6 @@ class Matriz(object):
         self.titulo_fila_s = Objeto_Titulo()
         self.titulo_columna_s = Objeto_Titulo()
 
-    
     def agregar_valor(self, dato, fila, columna):
         nuevo = Nodo(dato, fila, columna)
         titulo_fila = self.titulo_fila_s.devolver_valor(fila)
@@ -209,6 +217,20 @@ class Matriz(object):
                 tmp = tmp.pos_right
             titulo_fila = titulo_fila.siguiente
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #---------------------XXXXXXXXXXXXXX---XXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXXXXX---------------------------------
 #---------------------XXXXXXXXXXXXXX---XXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXXXXX---------------------------------
 #---------------------XXXX-------XXX---XXX--------XXX---XXX-----------XXX---XXX--------------------------------------------------
@@ -217,22 +239,53 @@ class Matriz(object):
 #---------------------XXXXXXXXXXXXXX---XXXXXXXXXXXXXX---XXX-----------XXX---XXX----XXXXXXXXXXXXX---------------------------------
 #---------------------XXXX-------------XXX----XXX-------XXX-----------XXX---XXX----XXX-------XXX---------------------------------
 #---------------------XXXX-------------XXX------XXX-----XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXXXXX---------------------------------
-#---------------------XXXX-------------XXX--------XXX---XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXXXXX---------------------------------    
+#---------------------XXXX-------------XXX--------XXX---XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXXXXX---------------------------------  
 class inicio():
     def __init__(self):
-        self.matriz_modificar = ''
-        self.acciones_a_hacer = ''
-        self.seleccion_ltrs = ''
-        self.matriz = Lista()            
-
-        self.root = Tk()
-        ancho_ventana = 1100
         alto_ventana = 530
+        ancho_ventana = 1100
+        self.matriz = Lista()            
+        self.root = Tk()
+        self.seleccion_ltrs = ''
+        self.acciones_a_hacer = ''
+        self.matriz_modificar = ''
         x_ventana = self.root.winfo_screenwidth() // 2 - ancho_ventana // 2
         y_ventana = self.root.winfo_screenheight() // 2 - alto_ventana // 2
         posicion = str(ancho_ventana) + "x" + str(alto_ventana) + "+" + str(x_ventana) + "+" + str(y_ventana)
-        self.root.title("Proyecto")
+        self.root.title("Proyecto - 201906051 | INICIO")
         self.menubar = Menu(self.root)
+        self.root.config(menu = self.menubar)
+        self.root.resizable(False, False)
+        self.root.geometry(posicion)
+        self.root.config(bg = 'lightgray')
+        self.menu_inicial = Menu(self.menubar, tearoff = 0)
+        self.menu_inicial.add_command(label="Seleccionar XML", command = lambda: self.XML_OPCION())        
+        self.opciones_dar = Menu(self.menubar, tearoff = 0)
+        self.opciones_dar.add_command(label  ="Clear", command = lambda: self.bot_a_seleccionar(4))
+        self.opciones_dar.add_command(label = "Diferencia", command = lambda: self.bot_a_seleccionar(11))
+        self.opciones_dar.add_command(label = "Diferencia Simetrica", command = lambda: self.bot_a_seleccionar(12))
+        self.opciones_dar.add_command(label = "Girar Horizontalmente", command = lambda: self.bot_a_seleccionar(1))
+        self.opciones_dar.add_command(label = "Girar Verticalmente", command = lambda: self.bot_a_seleccionar(2))
+        self.opciones_dar.add_command(label = "Inerseccion", command = lambda: self.bot_a_seleccionar(10))
+        self.opciones_dar.add_command(label = "Linea Horizontal", command = lambda: self.bot_a_seleccionar(5))
+        self.opciones_dar.add_command(label = "Linea Vertical", command = lambda: self.bot_a_seleccionar(6))
+        self.opciones_dar.add_command(label = "Rectangulo", command = lambda: self.bot_a_seleccionar(7))
+        self.opciones_dar.add_command(label = "Transpuesta", command = lambda: self.bot_a_seleccionar(3))
+        self.opciones_dar.add_command(label = "Triangulo Rectangulo", command = lambda: self.bot_a_seleccionar(8))
+        self.opciones_dar.add_command(label = "Union", command = lambda: self.bot_a_seleccionar(9))
+        self.documentacion_html = Menu(self.menubar, tearoff = 0)
+        self.documentacion_html.add_command(label = "Generar HTML", command = lambda: self.creacion_html())
+        self.menu_ayuda = Menu(self.menubar, tearoff = 0)
+        self.menu_ayuda.add_command(label="Documentacion", command = lambda: self.pdfandpdf())
+        self.menu_ayuda.add_command(label="Desarrollador", command = lambda: self.desarrollador())
+        self.menubar.add_cascade(label = "Cargar", menu = self.menu_inicial)
+        self.menubar.add_cascade(label = "Funciones", menu = self.opciones_dar)
+        self.menubar.add_cascade(label = "Documentacion", menu = self.documentacion_html)
+        self.menubar.add_cascade(label = "Ayuda", menu = self.menu_ayuda)
+        
+        
+        
+        self.root.mainloop()
         
 
 iniciar = inicio()
