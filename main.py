@@ -636,7 +636,48 @@ class inicio():
             self.seleccion_ltrs = 'mtz_sim'
             self.herramientas_p()
     
-    
+    def vlt_horiz(self, valor_inicial):        
+        nueva_matriz_usar = self.lista_matriz(valor_inicial)
+        x = int(nueva_matriz_usar.filas)
+        y = int(nueva_matriz_usar.columnas)
+        for a in range(x + 1):
+            for b in range(y + 1):
+                card_c = Entry(self.inicial_a, width = 3)
+                card_c.grid(padx = 5, pady = 5, row = a, column = b, columnspan = 1)
+                if a == 0 and b == 0:
+                    card_c.insert(0,'A')
+                    card_c.configure({'backgroun':'black'})
+                    card_c.config(justify = 'center', fg = 'white')
+                if a == 0 and b > 0:
+                    card_c.insert(0, b)
+                    card_c.configure({'backgroun':'white'})
+                    card_c.config(justify = 'center',fg = 'gray')
+                if a > 0 and b == 0:
+                    card_c.insert(0, a)
+                    card_c.configure({'backgroun':'white'})
+                    card_c.config(justify = 'center',fg = 'gray')
+                if nueva_matriz_usar.obtener_nodo(a, b) != None:
+                    card_c.insert(0,'*')
+                    card_c.configure({'background': "#454545"})
+                    card_c.config(justify = 'center', fg = 'white')
+                valor_nuevo_c = Entry(self.tercer_c, width = 3)    
+                valor_nuevo_c.grid(padx = 5, pady = 5, row = a, column = b, columnspan = 1)
+                if a == 0 and b == 0:
+                    valor_nuevo_c.insert(0,'A')
+                    valor_nuevo_c.configure({'backgroun':'black'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'white')
+                if a == 0 and b > 0:
+                    valor_nuevo_c.insert(0, b)
+                    valor_nuevo_c.configure({'backgroun':'white'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'gray')
+                if a > 0 and b == 0:
+                    valor_nuevo_c.insert(0, a)
+                    valor_nuevo_c.configure({'backgroun':'white'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'gray')
+                if nueva_matriz_usar.obtener_nodo(x - a + 1, b) != None:
+                    valor_nuevo_c.insert(0,'*')
+                    valor_nuevo_c.configure({'background': "#454545"})
+                    valor_nuevo_c.config(justify = 'center', fg = 'white')
     def vlt_vert(self, valor_inicial):        
         nueva_matriz_usar = self.lista_matriz(valor_inicial)
         x = int(nueva_matriz_usar.filas)
