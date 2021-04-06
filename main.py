@@ -334,7 +334,24 @@ class inicio():
 #--------------------------------------------------------------------------------------------------------------------------
         self.root.mainloop()
     
-    
+    def herramientas_p(self):
+        mat_dar = []
+        self.nuevo_bot()
+        self.clear_f()
+        self.opc_da = Label(self.opciones_bot, text = 'Opciones')
+        self.opc_da.grid(padx = 5, row = 0, column = 0)
+        for a in range(self.matriz.longitud):
+            mat_dar.append(str(self.matriz.devolver_valor(a + 1).val_in))
+        self.most_mtrs = ttk.Combobox(self.opciones_bot, values = mat_dar)
+        self.most_mtrs.set(mat_dar[0])
+        self.most_mtrs.grid(padx = 4, row = 0, column = 1)
+        self.opc_da2 = Label(self.opciones_bot, text = 'Seleccionar')
+        self.opc_da2.grid(padx = 4, row = 0, column = 2)
+        self.most_mtrs2 = ttk.Combobox(self.opciones_bot, values = mat_dar)
+        self.most_mtrs2.set(mat_dar[1])
+        self.most_mtrs2.grid(padx = 4, row = 0, column = 3)
+        self.most_rst = Button(self.opciones_bot, text = 'Mostrar', command = lambda: self.resultado_mostrar(), bg = 'lightgray')
+        self.most_rst.grid(padx = 4, row = 0, column = 4)
     def herramientas_de_graficar_a(self):
         mat_dar = []
         self.nuevo_bot()
