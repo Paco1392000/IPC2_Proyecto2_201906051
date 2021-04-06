@@ -322,7 +322,59 @@ class inicio():
         
         self.root.mainloop()
         
+    def XML_OPCION(self):
+        print('Cargando Archivo')
+        time.sleep(0.5)
+        print('.  .  .  .  .  .')
+        time.sleep(0.5)
+        try:
+            archivo = filedialog.askopenfilename(title = "XML: ", filetypes = (("XML File", "*.xml"),("all files","*.*")))        
+            arch_sep = minidom.parse(archivo)        
+            try:
+                archivo_name = arch_sep.getElementsByTagName('matriz')
+                for matriz in archivo_name:            
+                    csls_lns = 0
+                    valor_inicial = matriz.getElementsByTagName('nombre')[0]
+                    nom = valor_inicial.firstChild.data
+                    fila = matriz.getElementsByTagName('filas')[0]
+                    fil = fila.firstChild.data
+                    columna = matriz.getElementsByTagName('columnas')[0]
+                    col = columna.firstChild.data
+                    novo_mat = Matriz_Ortogonal(nom, fil, col)
+                    datos = matriz.getElementsByTagName('imagen')[0]
+                    racises = datos.firstChild.data
+                    separacion_por_saltos = racises.split('\n')
+                    try:
+                        del separacion_por_saltos[0]
+                        del separacion_por_saltos[len(separacion_por_saltos) - 1]
+                    except:
+                        print('Error')
+                    for a in range(len(separacion_por_saltos)):
+                        fil_de_nd = list(separacion_por_saltos[a])
+                        col_de_nd = 1
+                        for b in range(len(fil_de_nd)):                    
+                            if fil_de_nd[b] == '-' or fil_de_nd[b]=='*':                        
+                                if fil_de_nd[b] == '*':
+                                    novo_mat.agregar_valor('*',(a + 1),col_de_nd)
+                                    csls_lns += 1
+                                col_de_nd += 1
+                    self.matriz.agregar_valor(novo_mat)
+                    hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")
+                    casilla = ((int(fil)*int(col)) - csls_lns)
+                    self.matriz_modificar +='<tr><td><h3 class="codatos">'+hora+'</h3></td><td><h3 class="codatos">'+nom+'</h3></td><td><h3 class="codatos">'+str(csls_lns)+'</h3></td><td><h3 class="codatos">'+str(casilla)+'</h3></td></tr>\n'
+                self.matriz.nodo_a_mostrar()
+                self.matriz.devolver_valor(1).obtener_fila()
+            except:
+                print('Error')
+        except:
+            print('Error')
+        print('Archivo XML Cargado con Exito')
         
+    def pdfandpdf(self):
+        try:
+            os.system('Desktop\IPC2_Proyecto2_201906051.pdf')            
+        except:
+            print('Error: ARCHIVO NO ENCONTRADO')
         
         
     def desarrollador(self):
