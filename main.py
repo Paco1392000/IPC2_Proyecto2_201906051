@@ -246,18 +246,6 @@ else:
     time.sleep(0.5)
     print('                              Directorio Creado')
 
-
-
-
-
-
-
-
-
-
-
-
-
 #---------------------XXXXXXXXXXXXXX---XXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXXXXX---------------------------------
 #---------------------XXXXXXXXXXXXXX---XXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXXXXX---------------------------------
 #---------------------XXXX-------XXX---XXX--------XXX---XXX-----------XXX---XXX--------------------------------------------------
@@ -314,5 +302,22 @@ class inicio():
         
         self.root.mainloop()
         
+        
+        
+        
+    def desarrollador(self):
+        print('Universidad de San Carlos de Guatemala')
+        print('                        Facultad de Ingenieria')
+        print('             Ingenieria en Ciencias & Sistemas')
+        print('Introduccion a la Programacion & Computacion 2')
+        print('Seccion:  -------------------------------->  D')
+        print('Juan Francisco Urina Silva')
+        print('201906051')
+        
+    def pdfandpdf(self):
+        try:
+            os.system('Desktop\IPC2_Proyecto2_201906051.pdf')            
+        except:
+            print('Error: ARCHIVO NO ENCONTRADO')
 
 iniciar = inicio()
