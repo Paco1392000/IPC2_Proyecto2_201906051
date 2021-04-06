@@ -336,7 +336,21 @@ class inicio():
     
     
     
-    
+    def herramientas_agregar_linea(self):
+        self.labelFila = Label(self.opciones_bot, text = 'Fila')
+        self.labelFila.grid(padx = 4, row = 0, column = 2)
+        self.filaEntry = Entry(self.opciones_bot, width = 2)
+        self.filaEntry.grid(padx = 3, row = 0, column = 3 )
+        self.labelColumna = Label(self.opciones_bot, text = 'Columna')
+        self.labelColumna.grid(padx = 4, row = 0, column = 4)
+        self.columnaEntry = Entry(self.opciones_bot, width = 2)
+        self.columnaEntry.grid(padx = 3, row = 0, column = 5 )
+        self.labelCa = Label(self.opciones_bot, text = 'Longitud')
+        self.labelCa.grid(padx = 4, row = 0, column = 6)
+        self.cantidadEntry = Entry(self.opciones_bot, width = 2)
+        self.cantidadEntry.grid(padx = 3, row = 0, column = 7 )
+        self.most_rst = Button(self.opciones_bot, text = 'Mostrar', command = lambda: self.resultado_mostrar(), bg = 'lightgray')
+        self.most_rst.grid(padx = 4, row = 0, column = 8)
     def herramientas_de_graficar_b(self):
         mat_dar = []
         self.nuevo_bot()  
