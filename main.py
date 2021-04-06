@@ -321,7 +321,26 @@ class inicio():
         
         
         self.root.mainloop()
-        
+    
+    def clear_f(self):
+        try:
+            for child in self.inicial_a.winfo_children():
+                child.destroy()
+            for child in self.secundario_b.winfo_children():
+                child.destroy()
+            for child in self.tercer_c.winfo_children():
+                child.destroy()
+        except: 
+            print('Error')
+    
+    def nuevo_bot(self):
+        try:
+            for child in self.opciones_bot.winfo_children():
+                child.destroy()
+        except: 
+            print('Error')
+    
+     
     def XML_OPCION(self):
         print('Cargando Archivo')
         time.sleep(0.5)
