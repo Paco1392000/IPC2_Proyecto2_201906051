@@ -895,7 +895,7 @@ class inicio():
             return '-'
         else:
             return 'Error'
-        def agregar_triangulo_rectangulo(self, valor_inicial, x_1_A, y_1_A, x_1_B, y_1_B, cantidad):            
+    def agregar_triangulo_rectangulo(self, valor_inicial, x_1_A, y_1_A, x_1_B, y_1_B, cantidad):            
         nueva_matriz_usar = self.lista_matriz(valor_inicial)
         x = int(nueva_matriz_usar.filas)
         y = int(nueva_matriz_usar.columnas)
