@@ -455,7 +455,111 @@ class inicio():
     
     
     
-    
+    def resultado_mostrar(self):
+        if self.seleccion_ltrs =='horizontal':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()
+            self.vlt_horiz(mtrs_nom)
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")
+            dsk = '-'
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Giro Horizontal</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td></td></tr>\n'
+        if self.seleccion_ltrs == 'vertical':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()
+            self.vlt_vert(mtrs_nom)
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")
+            dsk = '-'
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Giro Vertical</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td></td></tr>\n'
+        if self.seleccion_ltrs == 'transpuesta':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()
+            self.tranponer_matriz(mtrs_nom)
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")
+            dsk = '-'
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Transpuesta</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td></td></tr>\n'
+        if self.seleccion_ltrs == 'area_limpiar':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()
+            dsk = '-'
+            if self.x_1_A.get().isdigit() and self.y_1_A.get().isdigit() and self.x_1_B.get().isdigit() and self.y_1_B.get().isdigit():
+                dsk = self.agregar_nuevo(mtrs_nom,int(self.x_1_A.get()), int(self.y_1_A.get()),int(self.x_1_B.get()), int(self.y_1_B.get()))
+            else:
+                dsk = 'Error'
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")            
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Borrado</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td></td></tr>\n'
+        if self.seleccion_ltrs == 'horiz_li':
+            self.clear_f()            
+            mtrs_nom = self.most_mtrs.get()
+            dsk = '-'
+            if self.filaEntry.get().isdigit() and self.columnaEntry.get() and self.cantidadEntry.get().isdigit():
+                dsk = self.agregar_nuevo(mtrs_nom,int(self.filaEntry.get()), int(self.columnaEntry.get()),int(self.filaEntry.get()), int(self.columnaEntry.get())+int(self.cantidadEntry.get())-1)
+            else:
+                dsk = 'Error'
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")            
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Linea Vertical</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td></td></tr>\n'
+        if self.seleccion_ltrs == 'vert_li':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()
+            dsk = '-'
+            if self.filaEntry.get().isdigit() and self.columnaEntry.get() and self.cantidadEntry.get().isdigit():
+                dsk = self.agregar_nuevo(mtrs_nom,int(self.filaEntry.get()), int(self.columnaEntry.get()),int(self.filaEntry.get())+int(self.cantidadEntry.get())-1, int(self.columnaEntry.get()))
+            else:
+                dsk = 'Error'
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")            
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Linea Horizontal</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td></td></tr>\n'
+        if self.seleccion_ltrs =='ag_rec':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()            
+            dsk = '-'
+            if self.x_1_A.get().isdigit() and self.y_1_A.get().isdigit() and self.entrada_ancho.get().isdigit() and self.entrada_dar.get().isdigit():
+                dsk = self.agregar_rectangulo(mtrs_nom,int(self.x_1_A.get()), int(self.y_1_A.get()), int(self.x_1_A.get()) + int(self.entrada_dar.get())-1, int(self.y_1_A.get()) + int(self.entrada_ancho.get())-1)
+            else:
+                dsk = 'Error'
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")            
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Rectangulo</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td></td></tr>\n'
+        if self.seleccion_ltrs =='ag_triangulo':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()            
+            dsk = '-'
+            if self.x_1_A.get().isdigit() and self.y_1_A.get().isdigit() and self.datoentry.get().isdigit():
+                self.agregar_triangulo_rectangulo(mtrs_nom,int(self.x_1_A.get()), int(self.y_1_A.get()), int(self.x_1_A.get()) + int(self.datoentry.get()) -1, int(self.y_1_A.get()) + int(self.datoentry.get()) -1, int(self.datoentry.get()))
+            else:
+                dsk = 'Error'
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")            
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Triangulo Rectangulo</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td></td></tr>\n'
+        if self.seleccion_ltrs =='union_m':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()
+            mtrs_nom2 = self.most_mtrs2.get()
+            self.unir_matrices(mtrs_nom, mtrs_nom2)
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")
+            dsk = '-'
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Union</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td><h3 class="codatos">'+mtrs_nom2+'</h3></td></tr>\n'
+        if self.seleccion_ltrs =='interseccion_m':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()
+            mtrs_nom2 = self.most_mtrs2.get()
+            self.matriz_interseccion(mtrs_nom, mtrs_nom2)
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")
+            dsk = '-'
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Interseccion</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td><h3 class="codatos">'+mtrs_nom2+'</h3></td></tr>\n'
+        if self.seleccion_ltrs =='dife_m':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()
+            mtrs_nom2 = self.most_mtrs2.get()
+            self.diferenciar_matrices(mtrs_nom, mtrs_nom2)
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")
+            dsk = '-'
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Diferencia</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td><h3 class="codatos">'+mtrs_nom2+'</h3></td></tr>\n'
+        if self.seleccion_ltrs =='mtz_sim':
+            self.clear_f()
+            mtrs_nom = self.most_mtrs.get()
+            mtrs_nom2 = self.most_mtrs2.get()
+            self.matric_diferencia_simet(mtrs_nom, mtrs_nom2)
+            fecha_hora = datetime.datetime.today().strftime("%Y-%m-%d ::-::  %H:%M:%S")
+            dsk = '-'
+            self.acciones_a_hacer +='<tr><td><h3 class="codatos">'+fecha_hora+'</h3></td><td><h3 class="codatos">'+dsk+'</h3></td><td><h3 class="codatos">Diferencia Simetrica</h3></td><td><h3 class="codatos">'+mtrs_nom+'</h3></td><td><h3 class="codatos">'+mtrs_nom2+'</h3></td></tr>\n'
+
     
     
     
