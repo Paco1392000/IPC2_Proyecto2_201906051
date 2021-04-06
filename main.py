@@ -745,6 +745,26 @@ class inicio():
                     card_c.insert(0,'*')
                     card_c.configure({'background': "#454545"})
                     card_c.config(justify = 'center', fg = 'white')
+        for a in range(y + 1):
+            for b in range(x + 1):
+                valor_nuevo_c = Entry(self.tercer_c, width = 3)    
+                valor_nuevo_c.grid(padx = 5, pady = 5, row = a, column = b, columnspan = 1)
+                if a == 0 and b == 0:
+                    valor_nuevo_c.insert(0,'A')
+                    valor_nuevo_c.configure({'backgroun':'black'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'white')
+                if a == 0 and b > 0:
+                    valor_nuevo_c.insert(0, b)
+                    valor_nuevo_c.configure({'backgroun':'white'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'gray')
+                if a > 0 and b == 0:
+                    valor_nuevo_c.insert(0, a)
+                    valor_nuevo_c.configure({'backgroun':'white'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'gray')
+                if nueva_matriz_usar.obtener_nodo(b, a) != None:
+                    valor_nuevo_c.insert(0,'*')
+                    valor_nuevo_c.configure({'background': "#454545"})
+                    valor_nuevo_c.config(justify = 'center', fg = 'white')
     
     
     
