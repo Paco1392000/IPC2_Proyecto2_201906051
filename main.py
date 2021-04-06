@@ -562,7 +562,79 @@ class inicio():
 
     
     
-    
+    def bot_a_seleccionar(self, valor):
+        if valor == 1:
+            self.nuevo_bot()
+            self.clear_f()          
+            self.herramientas_de_graficar_a()
+            self.root.title("Proyecto - 201906051 | Giro Horizontal")
+            self.seleccion_ltrs = 'horizontal'
+        if valor == 2:
+            self.nuevo_bot()
+            self.clear_f()
+            self.herramientas_de_graficar_a()
+            self.root.title("Proyecto - 201906051 | Giro Vertical")
+            self.seleccion_ltrs = 'vertical'
+        if valor == 3:
+            self.nuevo_bot()
+            self.clear_f()
+            self.herramientas_de_graficar_a()
+            self.root.title("Proyecto - 201906051 | Transpuesta")
+            self.seleccion_ltrs = 'transpuesta'
+        if valor == 4:
+            self.nuevo_bot()
+            self.clear_f()
+            self.root.title("Proyecto - 201906051 | Limpiar Area (Trabajo)")
+            self.seleccion_ltrs = 'area_limpiar'
+            self.herramientas_de_graficar_b()
+        if valor == 5:
+            self.nuevo_bot()
+            self.clear_f()
+            self.root.title("Proyecto - 201906051 | Linea Horizontal")
+            self.seleccion_ltrs = 'horiz_li'
+            self.herramientas_de_graficar_b()
+        if valor == 6:
+            self.nuevo_bot()
+            self.clear_f()
+            self.root.title("Proyecto - 201906051 | Linea Vertical")
+            self.seleccion_ltrs = 'vert_li'
+            self.herramientas_de_graficar_b()
+        if valor == 7:
+            self.clear_f()
+            self.nuevo_bot()
+            self.root.title("Proyecto - 201906051 | Rectangulo")
+            self.seleccion_ltrs = 'ag_rec'
+            self.herramientas_de_graficar_b()
+        if valor == 8:            
+            self.nuevo_bot()
+            self.clear_f()
+            self.root.title("Proyecto - 201906051 | Triangulo Rectangulo")
+            self.seleccion_ltrs = 'ag_triangulo'
+            self.herramientas_de_graficar_b()
+        if valor == 9:        
+            self.nuevo_bot()
+            self.clear_f()
+            self.root.title("Proyecto - 201906051 | Union")
+            self.seleccion_ltrs = 'union_m'
+            self.herramientas_p()
+        if valor == 10:     
+            self.nuevo_bot()
+            self.clear_f()
+            self.root.title("Proyecto - 201906051 | Interseccion")
+            self.seleccion_ltrs = 'interseccion_m'
+            self.herramientas_p()
+        if valor == 11:
+            self.nuevo_bot()
+            self.clear_f()
+            self.root.title("Proyecto - 201906051 | Diferencia")
+            self.seleccion_ltrs = 'dife_m'
+            self.herramientas_p()
+        if valor == 12:
+            self.nuevo_bot()
+            self.clear_f()
+            self.root.title("Proyecto - 201906051 | Diferencia Simetrica")
+            self.seleccion_ltrs = 'mtz_sim'
+            self.herramientas_p()
     
     
     
