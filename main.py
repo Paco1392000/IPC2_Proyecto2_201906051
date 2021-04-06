@@ -216,21 +216,37 @@ class Matriz_Ortogonal(object):
                     return tmp
                 tmp = tmp.pos_right
             titulo_fila = titulo_fila.siguiente
+            
+#-----------------------------XXXXXXXXXXXXXXX------XXXXXXXXXXXXXXXXX---XXXXX--XXXXXXX--------------------------------------------
+#-----------------------------XXXXXXXXXXXXXXXX-----XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXX------------------------------------------
+#-----------------------------XXXXX-----XXXXXXX----------XXXXX---------XXXXXXXX---XXXXXX-----------------------------------------
+#-----------------------------XXXXX-------XXXXXX---------XXXXX---------XXXXXXX-----XXXXX-----------------------------------------
+#-----------------------------XXXXX---------XXXX---------XXXXX---------XXXXXX----------------------------------------------------
+#-----------------------------XXXXX-------XXXXXX---------XXXXX---------XXXXX-----------------------------------------------------
+#-----------------------------XXXXX-----XXXXXXX----------XXXXX---------XXXXX-----------------------------------------------------
+#-----------------------------XXXXXXXXXXXXXXXX-----XXXXXXXXXXXXXXXXX---XXXXX-----------------------------------------------------
+#-----------------------------XXXXXXXXXXXXXXX------XXXXXXXXXXXXXXXXX---XXXXX-----------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if os.path.isdir('Desktop/C.201906051_Proyecto2/'):
+    print('Confirmando Existencia del Directorio')
+    time.sleep(0.8)
+    print('...............................................')
+    time.sleep(0.5)
+    print('                                 Ruta Existente')
+else:
+    print('Confirmando Existencia del Directorio')
+    time.sleep(0.8)
+    print('...............................................')
+    time.sleep(0.5)
+    print('                             Creando Directorio')
+    time.sleep(0.5)
+    print('...............................................')
+    time.sleep(0.5)
+    directorio_nuevo = 'Desktop/C.201906051_Proyecto2'
+    os.mkdir(directorio_nuevo)
+    time.sleep(0.5)
+    print('                              Directorio Creado')
+    
 #---------------------XXXXXXXXXXXXXX---XXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXXXXX---------------------------------
 #---------------------XXXXXXXXXXXXXX---XXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXX---XXXXXXXXXXXXXXXXXXXX---------------------------------
 #---------------------XXXX-------XXX---XXX--------XXX---XXX-----------XXX---XXX--------------------------------------------------
@@ -286,10 +302,22 @@ class inicio():
         self.opciones_bot.place(x = 0, y = 0, width = 1100, height = 45)      
         self.inicial_a = Frame(self.root, borderwidth = 8, relief = 'sunken', bg="white")
         self.inicial_a.place(x = 15 , y = 55, width = 350, height = 350)
+        self.primer_label = Label(text = 'Matriz "A"')
+        self.primer_label.configure({'backgroun':'lightgray'})
+        self.primer_label.config(justify = 'center', fg = 'blue', font = ('Arial', 15))
+        self.primer_label.place(x = 140, y = 420)
         self.secundario_b = Frame(self.root, borderwidth = 8, relief = 'sunken', bg="white")
         self.secundario_b.place(x = 735 , y = 55, width = 350, height = 350)
+        self.segundo_label = Label(text = 'Matriz "B"')
+        self.segundo_label.configure({'backgroun':'lightgray'})
+        self.segundo_label.config(justify = 'center', fg = 'blue', font = ('Arial', 15))
+        self.segundo_label.place(x = 880, y = 420)
         self.tercer_c = Frame(self.root, borderwidth = 8, relief = 'sunken', bg="gray")
         self.tercer_c.place(x = 375 , y = 175, width = 350, height = 350)
+        self.segundo_label = Label(text = 'Resultado')
+        self.segundo_label.configure({'backgroun':'lightgray'})
+        self.segundo_label.config(justify = 'center', fg = '#6495ED', font = ('Arial', 15))
+        self.segundo_label.place(x = 510, y = 130)
 #--------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------------------------------
@@ -305,6 +333,108 @@ class inicio():
 #--------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------------------------------------------------------------------------
         self.root.mainloop()
-        
-
+    
+    
+    def desarrollador(self):
+        print('Universidad de San Carlos de Guatemala')
+        print('                        Facultad de Ingenieria')
+        print('             Ingenieria en Ciencias & Sistemas')
+        print('Introduccion a la Programacion & Computacion 2')
+        print('Seccion:  -------------------------------->  D')
+        print('Juan Francisco Urina Silva')
+        print('201906051')
+    def clear_f(self):
+        try:
+            for child in self.inicial_a.winfo_children():
+                child.destroy()
+            for child in self.secundario_b.winfo_children():
+                child.destroy()
+            for child in self.tercer_c.winfo_children():
+                child.destroy()
+        except: 
+            print('Error')
+    
+    def nuevo_bot(self):
+        try:
+            for child in self.opciones_bot.winfo_children():
+                child.destroy()
+        except: 
+            print('Error')
+    def lista_matriz(self, val_in):
+        for a in range(self.matriz.longitud):
+            if val_in == self.matriz.devolver_valor(a + 1).val_in:
+                return self.matriz.devolver_valor(a + 1)    
+    def unir_matrices(self, valor_inicial, valor_secundario):        
+        nueva_matriz_usar = self.lista_matriz(valor_inicial)        
+        x = int(nueva_matriz_usar.filas)
+        y = int(nueva_matriz_usar.columnas)
+        mat_s2 = self.lista_matriz(valor_secundario)
+        x_a = int(mat_s2.filas)
+        y_a = int(mat_s2.columnas)
+        if x >= x_a:
+            fila = x
+        else:
+            fila = x_a
+        if y >= y_a:
+            columna = y
+        else:
+            columna = y_a
+        for a in range(fila+1):
+            for b in range(columna+1):
+                if a < x+1 and b < y+1:
+                    card_c = Entry(self.inicial_a, width = 3)
+                    card_c.grid(padx = 5, pady = 5, row = a, column = b, columnspan = 1)
+                    if a == 0 and b == 0:
+                        card_c.insert(0,'A')
+                        card_c.configure({'backgroun':'black'})
+                        card_c.config(justify = 'center',fg = 'white')
+                    if a == 0 and b > 0:
+                        card_c.insert(0, b)
+                        card_c.configure({'backgroun':'white'})
+                        card_c.config(justify = 'center',fg = 'gray')
+                    if a > 0 and b == 0:
+                        card_c.insert(0, a)
+                        card_c.configure({'backgroun':'white'})
+                        card_c.config(justify = 'center',fg = 'gray')
+                    if nueva_matriz_usar.obtener_nodo(a, b) != None:
+                        card_c.insert(0,'*')
+                        card_c.configure({'background': "#454545"})
+                        card_c.config(justify = 'center', fg = 'white')
+                if a < x_a+1 and b < y_a+1:
+                    car_d = Entry(self.secundario_b, width = 3)
+                    car_d.grid(padx = 5, pady = 5, row = a, column = b, columnspan = 1)
+                    if a == 0 and b == 0:
+                        car_d.insert(0,'A')
+                        car_d.configure({'backgroun':'black'})
+                        car_d.config(justify = 'center',fg = 'white')
+                    if a == 0 and b > 0:
+                        car_d.insert(0, b)
+                        car_d.configure({'backgroun':'white'})
+                        car_d.config(justify = 'center',fg = 'gray')
+                    if a > 0 and b == 0:
+                        car_d.insert(0, a)
+                        car_d.configure({'backgroun':'white'})
+                        car_d.config(justify = 'center',fg = 'gray')
+                    if mat_s2.obtener_nodo(a, b) != None:
+                        car_d.insert(0,'*')
+                        car_d.configure({'background': "#454545"})
+                        car_d.config(justify = 'center', fg = 'white')
+                valor_nuevo_c = Entry(self.tercer_c, width = 3)
+                valor_nuevo_c.grid(padx = 5, pady = 5, row = a, column = b, columnspan = 1)
+                if a == 0 and b == 0:
+                    valor_nuevo_c.insert(0,'A')
+                    valor_nuevo_c.configure({'backgroun':'black'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'white')
+                if a == 0 and b > 0:
+                    valor_nuevo_c.insert(0, b)
+                    valor_nuevo_c.configure({'backgroun':'white'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'gray')
+                if a > 0 and b == 0:
+                    valor_nuevo_c.insert(0, a)
+                    valor_nuevo_c.configure({'backgroun':'white'})
+                    valor_nuevo_c.config(justify = 'center', fg = 'gray')
+                if nueva_matriz_usar.obtener_nodo(a, b) != None or mat_s2.obtener_nodo(a, b) != None:
+                    valor_nuevo_c.insert(0,'*')
+                    valor_nuevo_c.configure({'background': "#454545"})
+                    valor_nuevo_c.config(justify = 'center', fg = 'white')
 iniciar = inicio()
