@@ -334,6 +334,138 @@ class inicio():
 #--------------------------------------------------------------------------------------------------------------------------
         self.root.mainloop()
     
+    def herramientas_p(self):
+        mat_dar = []
+        self.nuevo_bot()
+        self.clear_f()
+        self.opc_da = Label(self.opciones_bot, text = 'Opciones')
+        self.opc_da.grid(padx = 5, row = 0, column = 0)
+        for a in range(self.matriz.longitud):
+            mat_dar.append(str(self.matriz.devolver_valor(a + 1).val_in))
+        self.most_mtrs = ttk.Combobox(self.opciones_bot, values = mat_dar)
+        self.most_mtrs.set(mat_dar[0])
+        self.most_mtrs.grid(padx = 4, row = 0, column = 1)
+        self.opc_da2 = Label(self.opciones_bot, text = 'Seleccionar')
+        self.opc_da2.grid(padx = 4, row = 0, column = 2)
+        self.most_mtrs2 = ttk.Combobox(self.opciones_bot, values = mat_dar)
+        self.most_mtrs2.set(mat_dar[1])
+        self.most_mtrs2.grid(padx = 4, row = 0, column = 3)
+        self.most_rst = Button(self.opciones_bot, text = 'Mostrar', command = lambda: self.resultado_mostrar(), bg = 'lightgray')
+        self.most_rst.grid(padx = 4, row = 0, column = 4)
+    def herramientas_de_graficar_a(self):
+        mat_dar = []
+        self.nuevo_bot()
+        self.opc_da = Label(self.opciones_bot, text = 'Opciones')
+        self.opc_da.grid(padx = 5,row = 0, column = 0)
+        for a in range(self.matriz.longitud):
+            mat_dar.append(str(self.matriz.devolver_valor(a + 1).val_in))
+        self.most_mtrs = ttk.Combobox(self.opciones_bot, values = mat_dar)
+        self.most_mtrs.set(mat_dar[0])
+        self.most_mtrs.grid(padx = 4, row = 0, column = 1)
+        self.most_rst = Button(self.opciones_bot, text = 'Mostrar', command = lambda: self.resultado_mostrar(), bg = 'lightgray')
+        self.most_rst.grid(padx=5, row = 0, column = 2)
+    def herramientas_agregar_linea(self):
+        self.labelFila = Label(self.opciones_bot, text = 'Fila')
+        self.labelFila.grid(padx = 4, row = 0, column = 2)
+        self.filaEntry = Entry(self.opciones_bot, width = 2)
+        self.filaEntry.grid(padx = 3, row = 0, column = 3 )
+        self.labelColumna = Label(self.opciones_bot, text = 'Columna')
+        self.labelColumna.grid(padx = 4, row = 0, column = 4)
+        self.columnaEntry = Entry(self.opciones_bot, width = 2)
+        self.columnaEntry.grid(padx = 3, row = 0, column = 5 )
+        self.labelCa = Label(self.opciones_bot, text = 'Longitud')
+        self.labelCa.grid(padx = 4, row = 0, column = 6)
+        self.cantidadEntry = Entry(self.opciones_bot, width = 2)
+        self.cantidadEntry.grid(padx = 3, row = 0, column = 7 )
+        self.most_rst = Button(self.opciones_bot, text = 'Mostrar', command = lambda: self.resultado_mostrar(), bg = 'lightgray')
+        self.most_rst.grid(padx = 4, row = 0, column = 8)
+    def herramientas_de_graficar_b(self):
+        mat_dar = []
+        self.nuevo_bot()  
+        self.opc_da = Label(self.opciones_bot, text = 'Opciones')
+        self.opc_da.grid(padx = 5,row = 0, column = 0)
+        for a in range(self.matriz.longitud):
+            mat_dar.append(str(self.matriz.devolver_valor(a + 1).val_in))
+        self.most_mtrs = ttk.Combobox(self.opciones_bot, values = mat_dar)
+        self.most_mtrs.set(mat_dar[0])
+        self.most_mtrs.grid(padx = 5, row = 0, column = 1)
+        if self.seleccion_ltrs == 'area_limpiar':            
+            self.coordenanda1 = Label(self.opciones_bot, text = 'Inicio')
+            self.coordenanda1.grid(padx = 4, row = 0, column = 2)
+            self.x_1_A = Entry(self.opciones_bot, width = 2)
+            self.x_1_A.grid(padx = 3, row = 0, column = 3 )
+            self.y_1_A = Entry(self.opciones_bot, width = 2)
+            self.y_1_A.grid(padx = 4, row = 0, column = 4 )
+            self.coordenanda2 = Label(self.opciones_bot, text = 'Fin')
+            self.coordenanda2.grid(padx= 5, row = 0, column = 5)
+            self.x_1_B = Entry(self.opciones_bot, width = 2)
+            self.x_1_B.grid(padx = 3, row =0, column = 6 )
+            self.y_1_B = Entry(self.opciones_bot, width = 2)
+            self.y_1_B.grid(padx = 4, row =0, column = 7 )            
+            self.most_rst = Button(self.opciones_bot, text = 'Mostrar', command = lambda: self.resultado_mostrar(), bg = 'lightgray')
+            self.most_rst.grid(padx = 4, row = 0, column = 8)
+        if self.seleccion_ltrs == 'horiz_li':
+            self.herramientas_agregar_linea()
+        if self.seleccion_ltrs == 'vert_li':
+            self.herramientas_agregar_linea()
+        if self.seleccion_ltrs == 'ag_rec':
+            #------------------------------------------------------
+            #------------------------------------------------------
+            self.coordenanda1 = Label(self.opciones_bot, text = '"X"')
+            self.coordenanda1.grid(padx = 5, row = 0, column = 2)
+            self.x_1_A = Entry(self.opciones_bot, width = 2)
+            #***********************************************
+            self.x_1_A.grid(padx = 3, row = 0, column = 3)
+            #------------------------------------------------------
+            #------------------------------------------------------
+            self.coordenanda1_b2 = Label(self.opciones_bot, text = '"Y"')
+            self.coordenanda1_b2.grid(padx = 5, row = 0, column = 4)
+            self.y_1_A = Entry(self.opciones_bot, width = 2)
+            #***********************************************
+            self.y_1_A.grid(padx = 6, row = 0, column = 5)
+            #------------------------------------------------------
+            #------------------------------------------------------
+            self.anchura = Label(self.opciones_bot, text = 'Ancho')
+            self.anchura.grid(padx = 5, row = 0, column = 7)
+            self.entrada_ancho = Entry(self.opciones_bot, width = 2)
+            self.entrada_ancho.grid(padx = 3, row = 0, column = 8)
+            #------------------------------------------------------
+            self.altitud = Label(self.opciones_bot, text = 'Alto')
+            self.altitud.grid(padx = 5, row = 0, column = 10)
+            self.entrada_dar = Entry(self.opciones_bot, width = 2)
+            self.entrada_dar.grid(padx = 3, row = 0, column = 11)
+            #------------------------------------------------------
+            self.most_rst = Button(self.opciones_bot, text = 'Mostrar', command = lambda: self.resultado_mostrar(), bg = 'lightgray')
+            self.most_rst.grid(padx = 5, row = 0, column = 17)
+        if self.seleccion_ltrs == 'ag_triangulo':
+            self.coordenanda1 = Label(self.opciones_bot, text = 'Inicio')
+            self.coordenanda1.grid(padx = 5, row = 0, column = 2)
+            self.x_1_A = Entry(self.opciones_bot, width = 2)
+            self.x_1_A.grid(padx = 3, row = 0, column = 3)
+            self.y_1_A = Entry(self.opciones_bot, width = 2)
+            self.y_1_A.grid(padx = 5, row = 0, column = 4)
+            self.fls_cls = Label(self.opciones_bot, text = 'Ancho x Alto')
+            self.fls_cls.grid(padx = 5, row = 0, column = 5)
+            self.datoentry = Entry(self.opciones_bot, width = 2)
+            self.datoentry.grid(padx = 3, row = 0, column = 6)
+            self.most_rst = Button(self.opciones_bot, text = 'Mostrar', command = lambda: self.resultado_mostrar(), bg = 'lightgray')
+            self.most_rst.grid(padx = 5, row = 0, column = 7)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     def desarrollador(self):
         print('Universidad de San Carlos de Guatemala')
