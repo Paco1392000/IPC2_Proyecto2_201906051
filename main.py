@@ -1045,6 +1045,89 @@ class inicio():
                     if mat_s2.obtener_nodo(a, b) != None:                        
                         valor_nuevo_c.configure({'background': "white"})                        
                         valor_nuevo_c.delete(0, tk.END)
+    def matric_diferencia_simet(self, valor_inicial, valor_secundario):        
+        nueva_matriz_usar = self.lista_matriz(valor_inicial)        
+        x = int(nueva_matriz_usar.filas)
+        y = int(nueva_matriz_usar.columnas)
+        mat_s2 = self.lista_matriz(valor_secundario)
+        x_a = int(mat_s2.filas)
+        y_a = int(mat_s2.columnas)
+        if x >= x_a:
+            fila = x
+        else:
+            fila = x_a
+        if y >= y_a:
+            columna = y
+        else:
+            columna = y_a
+        for a in range(fila+1):
+            for b in range(columna+1):
+                if a < x + 1 and b < y + 1:
+                    card_c = Entry(self.inicial_a, width = 3)
+                    card_c.grid(padx = 5, pady = 5, row = a, column = b, columnspan = 1)
+                    if a == 0 and b == 0:
+                        card_c.insert(0,'A')
+                        card_c.configure({'backgroun':'black'})
+                        card_c.config(justify = 'center',fg = 'white')
+                    if a == 0 and b > 0:
+                        card_c.insert(0, b)
+                        card_c.configure({'backgroun':'white'})
+                        card_c.config(justify = 'center',fg = 'gray')
+                    if a > 0 and b == 0:
+                        card_c.insert(0, a)
+                        card_c.configure({'backgroun':'white'})
+                        card_c.config(justify = 'center',fg = 'gray')                    
+                    if nueva_matriz_usar.obtener_nodo(a, b) != None:
+                        card_c.insert(0,'*')
+                        card_c.configure({'background': "#454545"})
+                        card_c.config(justify = 'center', fg = 'white')
+                if a < x_a+1 and b < y_a + 1:
+                    car_d = Entry(self.secundario_b, width = 3)
+                    car_d.grid(padx = 5, pady = 5, row = a, column = b, columnspan = 1)
+                    if a == 0 and b == 0:
+                        car_d.insert(0,'A')
+                        car_d.configure({'backgroun':'black'})
+                        car_d.config(justify = 'center',fg = 'white')
+                    if a == 0 and b > 0:
+                        car_d.insert(0, b)
+                        car_d.configure({'backgroun':'white'})
+                        car_d.config(justify = 'center',fg = 'gray')
+                    if a > 0 and b == 0:
+                        car_d.insert(0, a)
+                        car_d.configure({'backgroun':'white'})
+                        car_d.config(justify = 'center',fg = 'gray')
+                    if mat_s2.obtener_nodo(a, b) != None:
+                        car_d.insert(0,'*')
+                        car_d.configure({'background': "#454545"})
+                        car_d.config(justify = 'center', fg = 'white')
+                valor_nuevo_c = Entry(self.tercer_c, width = 3)
+                valor_nuevo_c.grid(padx = 5, pady = 5, row = a, column = b, columnspan = 1)
+                if a == 0 and b == 0:
+                    valor_nuevo_c.insert(0,'A')
+                    valor_nuevo_c.configure({'backgroun':'black'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'white')
+                if a == 0 and b > 0:
+                    valor_nuevo_c.insert(0, b)
+                    valor_nuevo_c.configure({'backgroun':'white'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'gray')
+                if a > 0 and b == 0:
+                    valor_nuevo_c.insert(0, a)
+                    valor_nuevo_c.configure({'backgroun':'white'})
+                    valor_nuevo_c.config(justify = 'center',fg = 'gray')
+                if nueva_matriz_usar.obtener_nodo(a, b) != None:
+                    valor_nuevo_c.insert(0,'*')
+                    valor_nuevo_c.configure({'background': "#454545"})
+                    valor_nuevo_c.config(justify = 'center', fg = 'white')
+                    if mat_s2.obtener_nodo(a, b) != None:
+                        valor_nuevo_c.configure({'background': "white"})                        
+                        valor_nuevo_c.delete(0, tk.END)
+                if mat_s2.obtener_nodo(a, b) != None:
+                    valor_nuevo_c.insert(0,'*')
+                    valor_nuevo_c.configure({'background': "#454545"})
+                    valor_nuevo_c.config(justify = 'center', fg = 'white')
+                    if nueva_matriz_usar.obtener_nodo(a, b) != None:                        
+                        valor_nuevo_c.configure({'background': "white"})                        
+                        valor_nuevo_c.delete(0, tk.END)
     def matriz_interseccion(self, valor_inicial, valor_secundario):        
         nueva_matriz_usar = self.lista_matriz(valor_inicial)        
         x = int(nueva_matriz_usar.filas)
