@@ -460,8 +460,8 @@ class inicio():
         print('             Ingenieria en Ciencias & Sistemas')
         print('Introduccion a la Programacion & Computacion 2')
         print('Seccion:  -------------------------------->  D')
-        print('Juan Francisco Urina Silva')
-        print('201906051')
+        print('Nombre de Estudiante')
+        print('Carne del Estudiante')
 
     def bot_a_seleccionar(self, valor):
         if valor == 1:
@@ -1390,7 +1390,7 @@ class inicio():
         #print(self.acciones_a_hacer)
         mensaje += '''<h2>Operaciones</h2><table><tr><th><strong><h3 class="coencabezado">Dia - Hora</h3></strong></th><th><strong><h3 class="coencabezado">Error</h3></strong></th><th><strong><h3 class="coencabezado">Operacion</h3></strong></th><th><strong><h3 class="coencabezado">Matriz "A"</h3></strong></th><th><strong><h3 class="coencabezado">Matriz "B"</h3></strong></th></tr>'''
         mensaje += self.acciones_a_hacer
-        mensaje += '''</table></body><h6>Juan F. Urbina S.</h6><h6>201906051</h6></html>'''
+        mensaje += '''</table></body><h6>Estudiante Nombre</h6><h6>Carné:</h6></html>'''
         f.write(mensaje)
         f.close()
         print('Abriendo "Reporte_IPC2_Proyecto2"')
